@@ -1,0 +1,15 @@
+SORU1
+SELECT COUNT(*) FROM film
+WHERE length > (SELECT AVG(length) FROM film);
+
+SORU2
+SELECT COUNT((SELECT MAX(rental_rate) FROM film)) FROM film;
+
+SORU3
+SELECT title FROM film
+WHERE (rental_rate  = (SELECT MIN(rental_rate) FROM film)) AND (replacement_cost = (SELECT MIN(replacement_cost) FROM film));
+
+SORU4	
+SELECT  customer_id, count(customer_id) FROM payment
+group by customer_id
+order by count(customer_id) DESC
